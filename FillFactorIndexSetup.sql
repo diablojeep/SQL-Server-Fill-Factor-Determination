@@ -1,4 +1,4 @@
---© 2020 | ByrdNest Consulting
+--Â© 2020 | ByrdNest Consulting
 
 -- ensure a USE <databasename> statement has been executed first. 
 --USE <Database>    
@@ -140,9 +140,9 @@ CREATE TABLE [Admin].AgentIndexRebuilds(
 
 ALTER TABLE [Admin].AgentIndexRebuilds ADD  DEFAULT (CONVERT(DATE,getdate())) FOR CREATEDATE
 
-ALTER INDEX PK_AgentIndexRebuilds ON [Admin].AgentIndexRebuilds (ID ASC)
-	WITH (DATA_COMPRESSION = ROW, ONLINE = ON, FILLFACTOR = 100)';
-	END
+ALTER INDEX [PK_AgentIndexRebuilds] ON [Admin].[AgentIndexRebuilds] 
+REBUILD PARTITION = ALL 
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, ONLINE = ON, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, DATA_COMPRESSION = ROW)
 
 
 -- Below code from https://www.sqlskills.com/blogs/jonathan/tracking-problematic-pages-splits-in-sql-server-2012-extended-events-no-really-this-time/
